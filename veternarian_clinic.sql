@@ -11,7 +11,6 @@ DROP TABLE IF EXISTS clients;
 
 CREATE TABLE clients (
   id int(40) NOT null auto_increment,
-  pet_id int(40) NOT NULL,
   first_name varchar(40) NOT NULL,
   last_name varchar(45) NOT NULL, 
   mailing_address varchar(45) NOT NULL,
@@ -20,8 +19,7 @@ CREATE TABLE clients (
   zip_code int(10) NOT NULL,
   phone varchar(20) NOT NULL,
   email varchar(40) NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (pet_id) references pets
+  PRIMARY KEY (id)
 );
 
 CREATE TABLE pets (
@@ -33,15 +31,14 @@ CREATE TABLE pets (
   pet_age int(10) NOT NULL,
   pet_gender varchar(10) NOT NULL,
   PRIMARY KEY (id),
-  FOREIGN KEY (client_id) references clients
+  FOREIGN KEY (client_id) references clients(id)
 );
 
 CREATE TABLE billing (
   client_id int(40) NOT NULL,
   pet_id int(40) NOT NULL,
   balance_due decimal(10) NOT NULL,
-  PRIMARY KEY (client_id),
-  PRIMARY KEY (pet_id)
+  PRIMARY KEY (client_id, pet_id)
  
 );
 
