@@ -1,3 +1,7 @@
+create database if not exists veternarian_clinic;
+
+use veternarian_clinic;
+
 DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS billing;
