@@ -39,7 +39,7 @@ CREATE TABLE pets (
 CREATE TABLE billing (
   client_id int(40) NOT NULL,
   pet_id int(40) NOT NULL,
-  balance_due decimal(10) NOT NULL
+  balance_due decimal(10) NOT NULL,
   PRIMARY KEY (client_id),
   PRIMARY KEY (pet_id)
  
@@ -47,9 +47,9 @@ CREATE TABLE billing (
 
 CREATE TABLE appointments (
   pet_id int(40) NOT NULL,
-  schedule_appt date(10) NOT NULL,
-  delete_appt (60) NOT NULL,
-  change_appt date(10) NOT NULL,
+  schedule_appt date NOT NULL,
+  delete_appt date NOT NULL,
+  change_appt date NOT NULL,
   made_dateTime TIMESTAMP NOT NULL,
   PRIMARY KEY (pet_id)
 );
@@ -57,6 +57,6 @@ CREATE TABLE appointments (
 CREATE TABLE services (
   pet_id int(40)NOT NULL,
   surgeries varchar(50),
-  vaccines(40) NOT NULL,
+  vaccines varchar(40) NOT NULL,
   PRIMARY KEY (pet_id)
   );
