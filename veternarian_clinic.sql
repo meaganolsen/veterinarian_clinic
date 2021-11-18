@@ -30,6 +30,7 @@ CREATE TABLE pets (
   pet_breed varchar(40) NOT NULL,
   pet_age int(10) NOT NULL,
   pet_gender varchar(10) NOT NULL,
+  pet_fixed boolean NOT NULL,
   PRIMARY KEY (id),
   FOREIGN KEY (client_id) references clients(id)
 );
@@ -44,16 +45,13 @@ CREATE TABLE billing (
 
 CREATE TABLE appointments (
   pet_id int(40) NOT NULL,
-  schedule_appt date NOT NULL,
-  delete_appt date NOT NULL,
-  change_appt date NOT NULL,
-  made_dateTime TIMESTAMP NOT NULL,
+  scheduled_appt varchar(40) NOT NULL,
+  appt_type ENUM ('EXAM','SURGERY','VACCINES', 'NAIL TRIM'),
   PRIMARY KEY (pet_id)
 );
 
 CREATE TABLE services (
   pet_id int(40)NOT NULL,
-  surgeries varchar(50),
-  vaccines varchar(40) NOT NULL,
+  appt_type ENUM ('EXAM','SURGERY','VACCINES', 'NAIL TRIM'),
   PRIMARY KEY (pet_id)
   );
