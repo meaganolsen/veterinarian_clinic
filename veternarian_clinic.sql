@@ -1,7 +1,8 @@
-create database if not exists veternarian_clinic;
+create database if not exists veterinarian_clinic;
 
-use veternarian_clinic;
+use veterinarian_clinic;
 
+DROP Table IF exists appointment_services;
 DROP TABLE IF EXISTS services;
 DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS billing;
@@ -36,22 +37,36 @@ CREATE TABLE pets (
 );
 
 CREATE TABLE billing (
+  appointment_id int(40) NOT NULL auto_increment,
   client_id int(40) NOT NULL,
   pet_id int(40) NOT NULL,
   balance_due decimal(10) NOT NULL,
-  PRIMARY KEY (client_id, pet_id)
+  PRIMARY KEY (appointment_id),
+  FOREIGN KEY (pet_id) references pets(id),
+  FOREIGN KEY  (client_id) references clients(id)
  
 );
 
 CREATE TABLE appointments (
+  id int(40) NOT NULL auto_increment,
   pet_id int(40) NOT NULL,
-  scheduled_appt varchar(40) NOT NULL,
-  appt_type ENUM ('EXAM','SURGERY','VACCINES', 'NAIL TRIM'),
-  PRIMARY KEY (pet_id)
+  scheduled_appt DATETIME NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY(pet_id) references pets(id)
 );
 
 CREATE TABLE services (
+  id int(40) NOT NULL auto_increment,
   pet_id int(40)NOT NULL,
   appt_type ENUM ('EXAM','SURGERY','VACCINES', 'NAIL TRIM'),
-  PRIMARY KEY (pet_id)
+  description varchar(40) NOT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (pet_id) references pets(id)
+  );
+
+CREATE TABLE appointment_services (
+  appointment_id int(40) NOT NULL,
+  service_id int(40) NOT NULL,
+  FOREIGN KEY (appointments_id) references appointments,
+  FOREIGN Key (service_id) references services(id)
   );
