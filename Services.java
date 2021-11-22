@@ -1,7 +1,11 @@
-package veternarian_clinic.entities;
+package finalProject;
 
-public enum Services {
-  
-  EXAM, SURGERY, VACCINES, NAILTRIM;
+import java.util.List;
+
+public class Services {
+	private int serviceId;
+	private int petId;
+	private String serviceType;
+	private String description;
 
 }

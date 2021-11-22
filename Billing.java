@@ -1,11 +1,11 @@
-package veternarian_clinic.entities;
+package finalProject;
 
 import java.math.BigDecimal;
 
 public class Billing {
-  
-  private int clientId;
-  private int petId;
-  private BigDecimal balanceDue;
+	private int appointmentId;
+	private int clientId;
+	private int petId;
+	private BigDecimal balanceDue;
 
 }
